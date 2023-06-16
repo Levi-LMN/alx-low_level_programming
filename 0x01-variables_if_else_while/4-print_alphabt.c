@@ -1,11 +1,12 @@
 #include <stdio.h>
 
 /**
- * main entry
- * Prints the alphabet in lowercase, except for q and e
- * using putchar function
+ * main - Entry point
  *
- * Return: Always 0
+ * Description: Prints the alphabet in lowercase, excluding 'q' and 'e',
+ *              using the putchar function.
+ *
+ * Return: Always 0 (Success)
  */
 int main(void)
 {
