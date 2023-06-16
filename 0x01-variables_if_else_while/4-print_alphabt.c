@@ -1,7 +1,9 @@
 #include <stdio.h>
 
 /**
- * main entry - Prints the alphabet in lowercase, except for q and e. using putchar function
+ * main entry
+ * Prints the alphabet in lowercase, except for q and e
+ * using putchar function
  *
  * Return: Always 0
  */
