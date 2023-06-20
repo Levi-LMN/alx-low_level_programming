@@ -4,7 +4,7 @@
  * main - Entry point
  *
  * Description: Prints the first 98 Fibonacci numbers, starting with 1 and 2
- * separated by comma and space
+ *separated by comma and space
  *
  * Return: Always 0 (Success)
  */
