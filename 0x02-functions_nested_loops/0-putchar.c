@@ -1,11 +1,11 @@
 #include "main.h"
 
 /**
- * main entry point
+ * main - entry point
  *
  * Prints _putchar then a new line
  *
- * Return always 0
+ * Return: always 0(success)
  */
 
 int main(void)
