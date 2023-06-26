@@ -1,25 +1,35 @@
-#include "main.h"
-/**
- * rev_string - this function reverses a string
- *
- * @s: parameter input
- *
- * Return: None
-*/
+#include <stdlib.h>
 
+/**
+ * rev_string - Reverses a string.
+ * @s: String parameter to be reversed.
+ */
 void rev_string(char *s)
 {
-	int l, i;
-	char ch;
+	int length = 0;
+	char *reversed;
+	int i;
 
-	for (l = 0; s[l] != '\0'; ++l)
+	/* Find the length of the string */
+	while (s[length] != '\0')
+		length++;
 
-	for (i = 0; i < l / 2; ++i)
-	{
-		ch = s[i];
-		s[i] = s[l - 1 - i];
+	/* Allocate memory for the reversed string */
+	reversed = malloc((length + 1) * sizeof(char));
 
-		s[l - 1 - i] = ch;
-	}
+	if (reversed == NULL)
+		return; /* Failed to allocate memory */
 
+	/* Copy characters in reverse order */
+	for (i = 0; i < length; i++)
+		reversed[i] = s[length - i - 1];
+
+	reversed[length] = '\0'; /* Add null terminator */
+
+	/* Copy the reversed string back to the original string */
+	for (i = 0; i < length; i++)
+		s[i] = reversed[i];
+
+	free(reversed);
 }
+
