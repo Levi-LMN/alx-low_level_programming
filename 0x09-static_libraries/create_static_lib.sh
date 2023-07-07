@@ -1,5 +1,11 @@
 #!/bin/bash
-gcc -Wall -pedantic -Werror -Wextra -c *.c
+
+# Compile all the .c files into object files
+gcc -c *.c
+
+# Create the static library
 ar -rc liball.a *.o
-ranlib liball.a
+
+# Display the contents of the library
+ar -t liball.a
 
