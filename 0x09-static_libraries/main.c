@@ -1,4 +1,8 @@
 #include "main.h"
+/**
+ * main - Mian.c file
+ * Return: 0 (success)
+ */
 
 int main(void)
 {
