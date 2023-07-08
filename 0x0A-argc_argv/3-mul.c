@@ -6,7 +6,6 @@
  * @argc: argument count
  * @argv: arguments
  * Levi's code
-
  * Return: 0
  */
 int main(int argc, char **argv)
