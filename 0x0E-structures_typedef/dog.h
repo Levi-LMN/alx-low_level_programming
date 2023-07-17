@@ -1,6 +1,15 @@
 #ifndef DOG
 #define DOG
 
+/**
+ * struct dog - class of dog
+ *
+ * @name: Name of the dog
+ *
+ * @age: dog age
+ *
+ * @owner: dog owner
+ */
 
 struct dog
 {
