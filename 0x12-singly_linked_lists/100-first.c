@@ -1,25 +1,18 @@
-#include <stdio.h>
-
-/* Function to be executed before main */
-void my_constructor(void) __attribute__((constructor));
+#include<stdio.h>
 
 /**
- * my_constructor - Function that prints the desired lines before main.
+ * myStartupFun - Apply the constructor attribute to
+ * myStartupFun() so that it
+ *   is executed before main()
+ *   Return: null
  */
-void my_constructor(void)
+void myStartupFun(void) __attribute__ ((constructor));
+
+/**
+ * myStartupFun -  myStartupFun
+ */
+void myStartupFun(void)
 {
 	printf("You're beat! and yet, you must allow,\n");
 	printf("I bore my house upon my back!\n");
 }
-/**
- * main - void
- *
- * description
- * Return: always 0
- */
-int main(void)
-{
-	/* Rest of your main function code */
-	return (0);
-}
-
