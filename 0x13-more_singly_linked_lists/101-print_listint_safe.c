@@ -3,56 +3,66 @@
 #include <stdlib.h>
 
 /**
- * print_listint_safe - Prints a listint_t linked list safely
- * @head: Pointer to head of the list.
- * Levi's code
- * Return: no. of nodes in the list.
+ * _realloc_list - reallocates memory for an array of pointers
+ * to the nodes in a linked list
+ * @old_list: the old list to append
+ * @new_size: size of the new list (always one more than the old list)
+ * @new_node: new node to add to the list
+ *
+ * Return: pointer to the new list
+ */
+const listint_t **_realloc_list(const listint_t **old_list,
+		size_t new_size, const listint_t *new_node)
+{
+	const listint_t **new_list;
+	size_t i;
+
+	new_list = malloc(new_size * sizeof(listint_t *));
+	if (new_list == NULL)
+	{
+		free((void *)old_list);
+		exit(98);
+	}
+
+	for (i = 0; i < new_size - 1; i++)
+		new_list[i] = old_list[i];
+	new_list[i] = new_node;
+
+	free((void *)old_list);
+	return (new_list);
+}
+
+/**
+ * print_listint_safe - Prints a listint_t linked list safely.
+ *                      Checks for cycles in the list to avoid infinite loops.
+ *
+ * @head: Pointer to the start of the list.
+ *
+ * Return: The number of nodes in the list.
  */
 size_t print_listint_safe(const listint_t *head)
 {
-	const listint_t *slow, *fast;
-	size_t count = 0;
+	size_t i, num = 0;
+	const listint_t **list = NULL;
 
-	slow = head;
-	fast = head;
-
-	while (fast != NULL && fast->next != NULL)
+	while (head != NULL)
 	{
-		printf("[%p] %d\n", (void *)slow, slow->n);
-		count++;
-
-		slow = slow->next;
-		fast = fast->next->next;
-
-		/* Detect if there is a cycle */
-		if (slow == fast)
+		for (i = 0; i < num; i++)
 		{
-			/* Move slow back to the head to find the start of the cycle */
-			slow = head;
-			while (slow != fast)
+			if (head == list[i])
 			{
-				printf("[%p] %d\n", (void *)slow, slow->n);
-				count++;
-				slow = slow->next;
-				fast = fast->next;
+				printf("-> [%p] %d\n", (void *)head, head->n);
+				free((void *)list);
+				return (num);
 			}
-
-			/* Now both slow and fast are at the start of the cycle */
-			printf("[%p] %d\n", (void *)slow, slow->n);
-			count++;
-
-			/* Print the rest of the cycle (up to the start again) */
-			slow = slow->next;
-			while (slow != fast)
-			{
-				printf("[%p] %d\n", (void *)slow, slow->n);
-				count++;
-				slow = slow->next;
-			}
-			break;
 		}
+		num++;
+		list = _realloc_list(list, num, head);
+		printf("[%p] %d\n", (void *)head, head->n);
+		head = head->next;
 	}
 
-	return (count);
+	free((void *)list);
+	return (num);
 }
 
