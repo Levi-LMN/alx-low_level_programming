@@ -7,5 +7,5 @@ gcc -c *.c
 ar -rc liball.a *.o
 
 # Display the contents of the library
-ar -t liball.a
+ranlib liball.a
 
